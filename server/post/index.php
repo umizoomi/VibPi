@@ -33,6 +33,6 @@
     if(addMeasure($measurequery) != true){
         header('Fuck I have an error.', true, 500);
     } else{
-        header('OK', true, 201);
+        header('OK', true, 200);
     }
 ?>
