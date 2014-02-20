@@ -10,7 +10,6 @@ function rand_md5($length) {
     }
     return substr($random, 0, $length);
 }
-
 function checkDuplicateKey($key){
     $dupesql = "SELECT * FROM devices WHERE `key` = '".$key."'";
     $duperaw = mysql_query($dupesql) or die('SQL error :' . mysql_error());
@@ -20,14 +19,12 @@ function checkDuplicateKey($key){
         return false;
     }
 }
-
 function getNextEventID(){
     $sqlresult = mysql_query("SHOW TABLE STATUS LIKE 'events'") or die('SQL error :' . mysql_error());
     $data = mysql_fetch_assoc($sqlresult);
     
     return $data['Auto_increment'];
 }
-
 function getDeviceInfo($key){
     $sql = "SELECT * FROM devices WHERE `key` = '".$key."'";
     $device = mysql_query($sql) or die (mysql_error());
@@ -49,7 +46,26 @@ function getDeviceInfo($key){
         return $info;
     }
 }
-
+function getAllEvents(){
+    $sql = "SELECT * FROM events ORDER BY starttime DESC";
+    $data = mysql_query($sql) or die(mysql_error());
+    $events = array();
+    while($row = mysql_fetch_assoc($data)){
+        $event = array('id' => $row['id'], 'device' => $row['device'], 'starttime' => $row['starttime'], 'endtime' => $row['endtime']);
+        array_push($events, $event);
+    }
+    return $events;
+}
+function getEventMeasures($id){
+    $sql = "SELECT * FROM measures WHERE `event` = '".$id."' ORDER BY timestamp, ms";
+    $data = mysql_query($sql) or die(mysql_error());
+    $measures = array();
+    while($row = mysql_fetch_assoc($data)){
+        $measure = array('id' => $row['id'],  'timestamp' => $row['timestamp'],  'ms' => $row['ms'],  'x' => $row['x'],  'y' => $row['y'],  'z' => $row['z']);
+        array_push($measures, $measure);
+    }
+    return $measures;
+}
 function addDevice($name, $location){
     $key = rand_md5(18);
     while(checkDuplicateKey($key) == true){
@@ -63,7 +79,6 @@ function addDevice($name, $location){
     
     echo "Device added :D! Key: " . $key . ' . Dis key be important.';
 }
-
 function addMeasure($data){
     $sql = "INSERT INTO `measures` (`event`, `timestamp`, `ms`, `x`, `y`, `z`) VALUES $data";
     
@@ -73,7 +88,6 @@ function addMeasure($data){
     
     return true;
 }
-
 function addEvent($data){
     $sql = "INSERT INTO `events` (`device`, `starttime`, `endtime`) VALUES $data";
     
