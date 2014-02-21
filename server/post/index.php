@@ -19,20 +19,21 @@
 		} else if($key == "endtime"){
 		    $endtime = $value;
 		} else{
-		    $querystring .= "('--','".$value['ts']."','".$value['ms']."','".$value['x']."','".$value['y']."','".$value['z']."'), ";
+		    $measurequery .= "('--','".$value['ts']."','".$value['ms']."','".$value['x']."','".$value['y']."','".$value['z']."'), ";
 		}
 	}
+    $device = getDeviceFromKey($device);
     $eventquery = "('".$device['id']."','".$starttime."','".$endtime."')";
     if (addEvent($eventquery) != true){
         header('Fuck I have an error.', true, 500);
     }
     
-    $measurequery = str_replace('--', $eventid, $querystring);
+    $measurequery = str_replace('--', $eventid, $measurequery);
     $measurequery = chop($measurequery, ", ");
     
     if(addMeasure($measurequery) != true){
         header('Fuck I have an error.', true, 500);
     } else{
-        header('OK', true, 200);
+        header(':', true, 200);
     }
 ?>
