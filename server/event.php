@@ -20,7 +20,7 @@ $dataSource= "";
 $title = "Location: ".$device['location'].". Date: ".$eventStartTime[0].". Event start/end time: ".$eventStartTime[1]." - ".$eventEndTime[1];
 
 for($i = 0; $i <= count($measures)-1; $i++){
-    $dataSource .= "{measure: ".($i+1).", x: ".$measures[$i]['x'].", y: ".$measures[$i]['y'].", z: ".$measures[$i]['z'].", tag: 'Measure. DateTime: ".$measures[$i]['timestamp'].":".$measures[$i]['ms'].". Acceleration: x: ".$measures[$i]['x']." y: ".$measures[$i]['y']." z: ".$measures[$i]['z']."'}";
+    $dataSource .= "{measure: ".($i+1).", x: ".$measures[$i]['x'].", y: ".$measures[$i]['y'].", z: ".$measures[$i]['z'].", tag: 'Measure ".($i+1).". DateTime: ".$measures[$i]['timestamp'].":".$measures[$i]['ms'].". Acceleration: x: ".$measures[$i]['x']." y: ".$measures[$i]['y']." z: ".$measures[$i]['z']."'}";
     
     if ($i <= count($measures)-2){
         $dataSource .=",";
