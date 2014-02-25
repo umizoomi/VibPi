@@ -1,5 +1,6 @@
 <html>
 <head>
+    <title>VibPi index</title>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/globalize/0.1.1/globalize.min.js"></script>
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/knockout/3.0.0/knockout-min.js"></script>
@@ -20,7 +21,7 @@ $dataSource= "";
 $title = "Location: ".$device['location'].". Date: ".$eventStartTime[0].". Event start/end time: ".$eventStartTime[1]." - ".$eventEndTime[1];
 
 for($i = 0; $i <= count($measures)-1; $i++){
-    $dataSource .= "{measure: ".($i+1).", x: ".$measures[$i]['x'].", y: ".$measures[$i]['y'].", z: ".$measures[$i]['z'].", tag: 'Measure ".($i+1).". DateTime: ".$measures[$i]['timestamp'].":".$measures[$i]['ms'].". Acceleration: x: ".$measures[$i]['x']." y: ".$measures[$i]['y']." z: ".$measures[$i]['z']."'}";
+    $dataSource .= "{measure: ".($i+1).", x: ".$measures[$i]['x'].", y: ".$measures[$i]['y'].", z: ".$measures[$i]['z'].", tag: 'Measure ".($i+1).".<br> DateTime: ".$measures[$i]['timestamp'].":".$measures[$i]['ms'].".<br> Acceleration: x: ".$measures[$i]['x']." y: ".$measures[$i]['y']." z: ".$measures[$i]['z']."'}";
     
     if ($i <= count($measures)-2){
         $dataSource .=",";
@@ -104,7 +105,6 @@ var html = [
 
 $("#chartContainer").append(html);
 ko.applyBindings(model, $("#chartContainer")[0]);
-
 </script>
 </body>
 </html>
