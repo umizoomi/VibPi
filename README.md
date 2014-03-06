@@ -25,16 +25,16 @@ To get this project working you need the following:
 
 -in server/config.inc.php you should change the following:
 
----'DBUSER', 'Database Username'
----'DBPW', 'Database Password'
----'DBHOST', 'Database Host'
----'DBNAME', 'Database Name'
+---'DBUSER', '[Database Username]'
+---'DBPW', '[Database Password]'
+---'DBHOST', '[Database Host]'
+---'DBNAME', '[Database Name]'
 
 -obviously, upload the files in the server folder to your webhost/server.
 
 -in device/spatial.py you should change the following:
 
----server post url to http://yourhost/server folder/post/index.php on line 47
+---server post url to http://[yourhost]/[server folder]/post/index.php on line 47
 ---device key (which should be in the databse too) on line 67
 
 I'm planning to make this more user-friendly(plug-in-play) in the future with raspberry pi's. 
