@@ -39,7 +39,7 @@ The server is just some PHP code receiving posts, processing and showing data. M
 ## Follow these steps to setup the device #
 
 1. Install [Python 2.7.x](http://www.python.org/download/), if you haven't already.
-2. Install the [Phidget Library and Driver](http://www.phidgets.com/docs/Language_-_Python#Libraries_and_Drivers) for your device's systeem.
+2. Install the [Phidget Library and Driver](http://www.phidgets.com/docs/Language_-_Python#Libraries_and_Drivers) for your device's system.
 3. Install [Python Requests](http://docs.python-requests.org/en/latest/user/install/#install)
 4. Put the contents of [/device/](https://github.com/umizoomi/VibPi/tree/master/device) anywhere you like on your computer.
 5. Change the following in [device/spatial.py](https://github.com/umizoomi/VibPi/blob/master/device/spatial.py):
