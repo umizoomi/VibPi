@@ -13,28 +13,39 @@ When an acceleration measurement difference above 0.1g is measured, the script w
 
 The server is just some PHP code receiving posts, processing and showing data. My aim is to create a platform where different users can store their meausured data (vibrations in the house for example) and view it.
 
+## To get this project working you need the following hardware: #
 =====
 
-To get this project working you need the following:
+* Computer running Python.
+* Phidget Spatial 0/0/3
+* webhost/server running PHP 5.x+
+* webhost/server running MySQL Database 5.3+ 
 
--Computer running Python.
--webhost/server running PHP 5.x+
--MySQL Database 5.3+
+## Follow these steps to setup the server #
+=====
 
--database/db.sql should be imported in your database.
+1. database/db.sql should be imported in your database.
 
--in server/config.inc.php you should change the following:
+2. in server/config.inc.php you should change the following:
 
----'DBUSER', '[Database Username]'
----'DBPW', '[Database Password]'
----'DBHOST', '[Database Host]'
----'DBNAME', '[Database Name]'
+    * 'DBUSER', '[Database Username]'
+    * 'DBPW', '[Database Password]'
+    * 'DBHOST', '[Database Host]'
+    * 'DBNAME', '[Database Name]'
 
--obviously, upload the files in the server folder to your webhost/server.
+3. obviously, upload the contents in /server/ to your server.
 
--in device/spatial.py you should change the following:
+## Follow these steps to setup the device #
+=====
 
----server post url to http://[yourhost]/[server folder]/post/index.php on line 47
----device key (which should be in the databse too) on line 67
+1. Install [Python 2.7.x](http://www.python.org/download/), if you haven't already.
+2. Install the [Phidget Library and Driver](http://www.phidgets.com/docs/Language_-_Python#Libraries_and_Drivers) for your device's systeem.
+3. Install [Python Requests](http://docs.python-requests.org/en/latest/user/install/#install)
+4. Put the contents of /device/ anywhere you like on your computer.
+5. Change the following in device/spatial.py:
 
-I'm planning to make this more user-friendly(plug-in-play) in the future with raspberry pi's. 
+    * server post url to http://[yourhost]/[server folder]/post/index.php on line 47
+    * device key (which should be in the databse too) on line 67
+6. Connect your Phidget and run the script
+
+    * 
