@@ -14,7 +14,6 @@ When an acceleration measurement difference above 0.1g is measured, the script w
 The server is just some PHP code receiving posts, processing and showing data. My aim is to create a platform where different users can store their meausured data (vibrations in the house for example) and view it.
 
 ## To get this project working you need the following hardware: #
-=====
 
 * Computer running Python.
 * Phidget Spatial 0/0/3
@@ -22,30 +21,36 @@ The server is just some PHP code receiving posts, processing and showing data. M
 * webhost/server running MySQL Database 5.3+ 
 
 ## Follow these steps to setup the server #
-=====
 
-1. database/db.sql should be imported in your database.
+1. [database/db.sql](https://github.com/umizoomi/VibPi/blob/master/database/db.sql) should be imported in your database.
 
-2. in server/config.inc.php you should change the following:
+2. in [server/config.inc.php](https://github.com/umizoomi/VibPi/blob/master/server/config.inc.php) you should change the following:
 
-    * 'DBUSER', '[Database Username]'
-    * 'DBPW', '[Database Password]'
-    * 'DBHOST', '[Database Host]'
-    * 'DBNAME', '[Database Name]'
+      
+   ```php
+   DEFINE ('DBUSER', 'Database Username');
+   DEFINE ('DBPW', 'Database password');
+   DEFINE ('DBHOST', 'Database host');
+   DEFINE ('DBNAME', 'Database name');
+   ```
 
-3. obviously, upload the contents in /server/ to your server.
+3. upload the contents in [/server/](https://github.com/umizoomi/VibPi/tree/master/server) to your server.
 
 ## Follow these steps to setup the device #
-=====
 
 1. Install [Python 2.7.x](http://www.python.org/download/), if you haven't already.
 2. Install the [Phidget Library and Driver](http://www.phidgets.com/docs/Language_-_Python#Libraries_and_Drivers) for your device's systeem.
 3. Install [Python Requests](http://docs.python-requests.org/en/latest/user/install/#install)
-4. Put the contents of /device/ anywhere you like on your computer.
-5. Change the following in device/spatial.py:
+4. Put the contents of [/device/](https://github.com/umizoomi/VibPi/tree/master/device) anywhere you like on your computer.
+5. Change the following in [device/spatial.py](https://github.com/umizoomi/VibPi/blob/master/device/spatial.py):
 
-    * server post url to http://[yourhost]/[server folder]/post/index.php on line 47
-    * device key (which should be in the databse too) on line 67
+   ```python
+   r = requests.post('SERVER_POST_URL_HERE', data=json.dumps(data)) #on line 47
+   key = 'DEVICE_KEY_HERE' #on line 67
+   ```
+
 6. Connect your Phidget and run the script
 
-    * 
+   ```unix
+   python /home/user/spatial.py
+   ```
