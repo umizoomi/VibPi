@@ -46,7 +46,7 @@ The server is just some PHP code receiving posts, processing and showing data. M
 
    ```python
    r = requests.post('SERVER_POST_URL_HERE', data=json.dumps(data)) #on line 47
-   key = 'DEVICE_KEY_HERE' #on line 67
+   key = 'DEVICE_KEY_HERE' #on line 67, this key should also be in your database!
    ```
 
 6. Connect your Phidget and run the script
